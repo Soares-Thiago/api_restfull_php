@@ -124,12 +124,19 @@ class UserDAO extends database {
                 WHERE
                     id = $usuario_id";
 
-         $stmt = $this->cnx->prepare($sql);
-         $result = $stmt->execute();
+        $stmt = $this->cnx->prepare($sql);
+        $result = $stmt->execute();
+         
+        $sql = "DELETE FROM drink
+                WHERE
+                    user_id = $usuario_id";
 
-         if(!$result){
-             throw new Exception("Ocorreu um erro ao deletar o registro em usuario!");
-         }
+        $stmt = $this->cnx->prepare($sql);
+        $result = $stmt->execute();
+
+        if(!$result){
+            throw new Exception("Ocorreu um erro ao deletar o registro em usuario!");
+        }
     }
     
     /*
